@@ -19,7 +19,17 @@ function App() {
     }
     setIndex((prevState) => prevState - 1);
   };
+  // useEffect for outo slides
 
+  useEffect(() => {
+    let slider = setInterval(() => {
+      if (index === slides.length - 1) {
+        return setIndex(0);
+      }
+      setIndex(index + 1);
+    }, 3000);
+    return () => clearInterval(slider);
+  }, [index, slides.length]);
   return (
     <section className="section">
       <div className="title">
