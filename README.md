@@ -14,7 +14,7 @@
 - Added functions to move to next slide and prev slide
 - Added useEffect for auto move to next slide
 
-# This project is Live <a href="https://mz-react-tabs.netlify.app">Here</a> ! Enjoy .
+# This project is Live <a href="https://mz-react-slider.netlify.app">Here</a> ! Enjoy .
 
 - Have a nice day 🌞
 - 📫 Find me on <a href="https://marcin-zygan.com">marcin-zygan.com</a>
