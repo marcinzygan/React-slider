@@ -6,6 +6,20 @@ function App() {
   const [slides, setSlides] = useState(data);
   const [index, setIndex] = useState(0);
 
+  const nextSlide = function () {
+    if (index === slides.length - 1) {
+      return setIndex(0);
+    }
+    setIndex((prevState) => prevState + 1);
+  };
+
+  const prevSlide = function () {
+    if (index === 0) {
+      return setIndex(slides.length - 1);
+    }
+    setIndex((prevState) => prevState - 1);
+  };
+
   return (
     <section className="section">
       <div className="title">
@@ -14,10 +28,24 @@ function App() {
         </h2>
       </div>
       <div className="section-center">
-        {slides.map((item, index) => {
+        {slides.map((item, ItemIndex) => {
           const { id, image, name, title, quote } = item;
+          let position = "nextSlide";
+          if (ItemIndex === index) {
+            position = "activeSlide";
+          }
+          if (
+            ItemIndex === index - 1 ||
+            (index === 0 && ItemIndex === slides.length - 1)
+          ) {
+            position = "lastSlide";
+          }
+          // if (index === 0) {
+          //   ItemIndex = slides.length - 1;
+          //   position = "lastSlide";
+          // }
           return (
-            <article key={id}>
+            <article className={position} key={id}>
               <img src={image} alt={name} className="person-img" />
               <h4>{name}</h4>
               <p className="title">{title}</p>
@@ -26,10 +54,10 @@ function App() {
             </article>
           );
         })}
-        <button className="prev">
+        <button className="prev" onClick={prevSlide}>
           <FiChevronLeft />
         </button>
-        <button className="next">
+        <button className="next" onClick={nextSlide}>
           <FiChevronRight />
         </button>
       </div>
